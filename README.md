@@ -369,4 +369,27 @@ http://localhost:4000
 
 ---
 
+## Docker & Local Setup
+
+Make sure `docker-compose.yml` is present at the repo root and includes both `postgres` and `api` services. The API service depends on PostgreSQL and uses a multi-stage `TaskFlow-API/Dockerfile`.
+
+Copy `.env.example` to `.env` and provide real secrets before starting.
+
+```bash
+cp .env.example .env
+docker compose down -v
+docker compose up --build
+```
+
+The API should start, run EF Core migrations automatically, and be available at:
+
+```
+http://localhost:5000
+```
+
+## Test Credentials
+
+Email: `test@example.com`
+Password: `password123`
+
 *Questions? Reply to the email this was sent from. Good luck — we look forward to seeing what you build.*
